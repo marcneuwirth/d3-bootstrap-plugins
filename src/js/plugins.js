@@ -21,8 +21,14 @@
     optionsList = [];
     voronois = [];
     this.each(function(d, i) {
-      var opt;
+      var key, opt, _i, _len;
       opt = f.apply(this, arguments);
+      for (_i = 0, _len = defaults.length; _i < _len; _i++) {
+        key = defaults[_i];
+        if (opt[key] === void 0) {
+          opt[key] = defaults[key];
+        }
+      }
       optionsList.push(opt);
       if (opt.detection === 'voronoi') {
         return voronois.push([opt, i]);

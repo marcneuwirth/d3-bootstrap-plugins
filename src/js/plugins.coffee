@@ -33,6 +33,8 @@
     
       this.each((d,i)->
         opt = f.apply(this,arguments)
+        for key in defaults
+          opt[key] = defaults[key] if opt[key] is undefined 
         optionsList.push(opt)
         voronois.push([opt,i]) if opt.detection is 'voronoi'
       )
